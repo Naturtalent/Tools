@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0">
+	<LetterData />
+	<Inhalt>
+		<text section="INHALT" name="STANDARD_ANREDE">
+			<p>Sehr geehrte Damen und Herren,</p>
+			<p />
+		</text>
+		<text section="INHALT" name="GRUSS_APEL">
+			<p />
+			<p>Mit freundlichen Grüßen</p>
+			<p />
+			<p>i.A.</p>
+			<p />
+			<p>Dieter Apel</p>
+		</text>
+	</Inhalt>
+	<Datum>
+		<p>10. November 2009</p>
+	</Datum>
+</root>
+

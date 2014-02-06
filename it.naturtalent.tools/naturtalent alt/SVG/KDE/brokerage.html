@@ -1,0 +1,486 @@
+
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<title>Pers&ouml;nlicher Bereich - Login</title>
+<meta name="author" content="comdirect bank AG" />
+<meta name="copyright" content="comdirect bank AG" />
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta http-equiv="Expires" content="-1" />
+
+
+<link href="/common/css/style.css" rel="stylesheet" type="text/css" />
+
+
+
+<style type="text/css">
+body {background-color:#ffffff; margin:0px;padding:0;}
+#headerContent{
+background-color:#ECECF1;
+padding:0px;
+margin:0;
+height:105px;
+}
+#topNav {
+width:658px;
+margin:0 0 0px 17px;
+padding:0;
+line-height:1;
+padding:10px 0 16px 0;
+color:#999999;
+height:58px;
+clear:both;
+font-family:verdana,arial,helvetica,sans-serif;
+voice-family: "\"}\"";
+voice-family:inherit;
+height:23px;
+}
+html>#topNav{
+height:23px;
+}
+#topNav img#buttonLogin{border:0;padding:0px 0 0 0;margin:0 0 2px 0;vertical-align:bottom;}
+#topNav a{
+color:#000;
+text-decoration:none;
+font-size:11px;
+padding:0 0px 0 0px;
+margin:0;
+vertical-align:bottom;
+}
+#topNav form{
+float:left;
+line-height:normal;
+margin:0;
+padding:0;
+width:180px;
+vertical-align:bottom;
+}
+#topNav form.right{width:140px;}
+#topNav input{
+line-height:1;
+margin:0px 0 1px 0;
+font-family:verdana,arial,helvetica,sans-serif;
+font-size:10px;
+vertical-align:bottom;
+}
+#topNav input.fieldL{
+width:90px;
+padding:2px;
+border:1px solid #A6A7B0;
+margin:0px 3px 0 13px;
+voice-family: "\"}\"";
+voice-family:inherit;
+width:84px;
+}
+#topNav input.fieldR{
+width:90px;
+padding:2px;
+border:1px solid #A6A7B0;
+margin:0 3px 0 13px;
+voice-family: "\"}\"";
+voice-family:inherit;
+width:84px;
+}
+#topNavLeft{
+float:left;
+width:330px;
+padding:0px 0 0px 0px;
+margin:5px 0 0 0;
+font-size:10px;
+line-height:normal;
+}
+#topNavRight{
+float:left;
+width:180px;
+padding:0px 0 0px 0px;
+margin-top:8px;
+font-size:11px;
+letter-spacing: -1px;
+line-height:normal;
+text-align:right;
+}
+#header {
+float:left;
+width:auto;
+padding-left: 17px;
+font-size:11px;
+background:#ECECF1;
+}
+#header ul {
+width:600px;
+margin:0;
+padding-left:2px;
+list-style:none;
+background:url("/common/images/nav_left.gif") no-repeat left top;
+height: 28px
+}
+#header li {
+float:left;
+height:28px;
+background:url("/common/images/nav_right_multi.gif") no-repeat right top;
+margin:0;
+padding:0;
+}
+#header a {
+display:block;
+padding:7px 16px 6px 16px;
+font-family:verdana,arial,helvetica,sans-serif;
+font-size:11px;
+color:#000;
+text-decoration:none;
+font-weight:bold;
+}
+#header li.currentMain{background-position: right bottom;}
+#secondNav{
+float:left;
+width:100%;
+line-height:normal;
+background:url("/common/images/nav_bg.gif") repeat-x right top;
+background-color:#D4D4E0;
+font-size:10px;
+height:28px;
+margin:0;
+padding:0 0 0 17px;
+}
+#secondNav ul {
+margin:0;
+padding:0;
+list-style:none;
+}
+#secondNav li {
+float:left;
+margin:0;
+padding:0;
+}
+#secondNav li.current{ background:url("/common/images/subnav_current.gif") no-repeat right top;padding-right:2px;}
+#secondNav a {
+display:block;
+padding:8px 5px 6px 5px;
+font-family:verdana,arial,helvetica,sans-serif;
+font-size:11px;
+color:#000;
+text-decoration:none;
+}
+#secondNav li.pipe{
+color:#999999;
+padding:8px 0px 6px 0px;
+font-family:verdana,arial,helvetica,sans-serif;
+font-size:11px;
+}
+#secondNav a.current{
+background:url("/common/images/subnav_current.gif") no-repeat left top;
+font-weight:bold;
+padding:8px 6px 7px 8px;
+}
+#logo{
+position:absolute;
+top:32px;
+left:586px;
+voice-family: "\"}\"";
+voice-family:inherit;
+top:17px;
+}
+html>#logo{
+top:17px;
+}
+</style>
+<link rel="stylesheet" type="text/css" href="/common/css/style.css" />
+<style type="text/css">
+body {
+background-color:#ffffff;
+margin:0px;
+padding:0;
+border-left:0px solid #ffffff;
+width:auto;
+}
+.bodyWidth {
+font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;
+font-size:11px;
+margin:0;
+margin:15px 0 0 17px;
+background-color:#ffffff;
+width:735px;
+voice-family: "\"}\"";
+voice-family:inherit;
+width:732px;
+}
+html>#logo{
+width:732px;
+}
+.spaceLeft17 { border-left: 17px solid #ffffff;}
+</style>
+
+<script language="JavaScript" type="text/javascript">
+
+</script>
+<script language="JavaScript" type="text/javascript">
+//<![CDATA[
+// opens a new javascript browser-window (fixed size) with a certain help-page (topic+'.html') in the root directory
+function openInfo(topic) {
+if (location.href.indexOf('https:') != -1) {
+var where = 'https://coma.comdirect.de/cms/help/util/frameset.cml?content=../pages/hp/' + topic + '.cml';
+}
+else {
+var where = 'https://coma.comdirect.de/cms/help/util/frameset.cml?content=../pages/hp/' + topic + '.cml';
+}
+openWindow(where,290,471,0,0,'newInfo','wl01');
+}
+// opens a new javascript browser-window (fixed size) with a certain help-page (topic+'.html') in the root directory
+function openLexikon(topic) {
+if (location.href.indexOf('https:') != -1) {
+var where = 'https://coma.comdirect.de/cms/help/util/frameset.cml?content=../pages/lx/' + topic + '.cml';
+}
+else {
+var where = 'https://coma.comdirect.de/cms/help/util/frameset.cml?content=../pages/lx/' + topic + '.cml';
+}
+openWindow(where,290,471,0,0,'newLexicon','wl01');
+}
+// opens a new javascript browser-window (fixed size) with a certain help-page (topic+'.html') from another popup
+// to open help-popup from inside a popup must use this function, otherwise the 1st popup will be replaced by the help-page
+function openInfoFromPopup(topic) {
+var where = 'https://coma.comdirect.de/cms/help/util/frameset.cml?content=../pages/hp/' + topic + '.cml';
+openWindow(where,290,471,0,0,'newInfo','wl01', true);
+}
+
+function printer() {
+var URL = "https://www.comdirect.de/noprinter.html";
+if (window.print) window.print();
+else openWin(URL,310,232);
+}
+//]]>
+</script>
+<script language="JavaScript" src="/common/js/jsstatic.js" type="text/javascript"></script>
+
+<script language="JavaScript" type="text/javascript">
+//<![CDATA[
+var eCrmPageId = 'cori0004';
+var wins = new Array();
+var enterFlag = 2;
+function setEnterFlag(val)
+{
+enterFlag = val;
+}
+function execute()
+{
+if ( submid && !bMSIE )
+{
+submid = false;
+switch (enterFlag)
+{
+case 0:
+document.forms[0].submit();
+break;
+case 1:
+document.forms[1].submit();
+break;
+case 2:
+document.forms[2].submit();
+break;
+default:
+document.forms[2].submit();
+}
+}
+}
+//]]>
+</script>
+<script language="JavaScript" src="/common/js/ecrm.js" type="text/javascript"></script>
+
+<script language="JavaScript" src="/common/js/cookieChecker.js" type="text/javascript"></script>
+
+</head>
+<body onload="document.login.param1.focus();">
+<div id="logo">
+<a href="http://www.comdirect.de/index.html?gourl=http://www.comdirect.de/static/cmsroot/cms/homepage/pages/cori0001_homepage.cml" ><img src="/common/images/logo_navi.gif" width="176" height="50" alt="comdirect" title="comdirect" border="0" /></a>
+</div>
+<div id="headerContent">
+<div id="topNav">
+<div id="topNavLeft">
+<form action="http://coma.comdirect.de/formIndex.do" method="post" name="ssearch" id="ssearch" target="_self"><a href="http://coma.comdirect.de/PerformLoginLogoutRH.do" name="loginLink" ><img src="/common/images/buttons/login_green.gif" width="56" height="16" alt="login_green" border="0" name="buttonLogin" /></a><input type="hidden" name="jumpTo" value="http://isht.comdirect.de/html/search/main.html" /><input class="fieldL" type="text" name="sSearchterm" value="Kurssuche" size="9" onclick="this.value='';" onfocus="setEnterFlag(0);" /><input type="image" src="/common/images/input_button.gif" alt="Kurssuche" title="Kurssuche" align="middle" /></form><form class="right" action="http://coma.comdirect.de/formIndex.do" method="get" name="search2" id="search2" target="_self"><input type="hidden" name="jumpTo" value="http://coma.comdirect.de/member/searchengine/SearchQueryRH.do" /><input type="hidden" name="area" value="all" /><input class="fieldR" type="text" name="term" value="Volltextsuche" onclick="this.value='';" onfocus="setEnterFlag(1);" maxlength="55" /><input type="image" src="/common/images/input_button.gif" alt="Volltextsuche" title="Volltextsuche" align="middle" /></form></div>
+<div id="topNavRight">
+<a href="http://www.comdirect.de/index.html?gourl=http://isht.comdirect.de/html/musterdepot/main.html">Musterdepot</a> &nbsp;|&nbsp;
+<a href="http://www.comdirect.de/index.html?gourl=http://www.comdirect.de/static/cmsroot/cms/support/pages/website/cori0801_kontakt.cml">Kontakt</a> &nbsp;|&nbsp;
+<a href="http://www.comdirect.de/index.html?gourl=http://www.comdirect.de/static/cmsroot/cms/company/pages/german/cori0802_ueberuns.cml">&Uuml;ber uns</a>
+</div>
+</div>
+<div id="header">
+<ul>
+<li id="Persoenlicherbereich"><a class="start" href="http://www.comdirect.de/index.html?gourl=http://www.comdirect.de/redirector3.html">Pers&ouml;nlicher Bereich</a></li>
+<li id="Maerkte"><a href="http://www.comdirect.de/index.html?gourl=http://isht.comdirect.de/html/maerkte/main.html">Informer</a></li>
+<li id="Produkte"><a href="http://www.comdirect.de/index.html?gourl=http://www.comdirect.de/static/cmsroot/cms/produkte/pages/cori4136_subhpprodukte.html">Produkte</a></li>
+<li id="Services"><a href="http://www.comdirect.de/index.html?gourl=http://www.comdirect.de/static/cmsroot/cms/services/pages/cori4128_subhp_services.html">Services</a></li>
+<li id="Forum"><a href="http://www.comdirect.de/index.html?gourl=http://coco.comdirect.de/member/community/ForumSubHomepageVP.do">Forum</a></li>
+</ul>
+</div>
+<div id="secondNav">&nbsp;</div>
+</div>
+<div class="bodyWidth">
+<div class="contentColumn">
+<h1>Login <a href="javascript:openInfo('cori0004_help')"><img src="/common/images/icons/info.gif" width="17" height="17" title="Hilfe und Infos" alt="Hilfe und Infos" class="icon" border="0" /></a></h1>
+
+<div class="paddingBottom25">
+<div id="noscript">
+<noscript>
+<div><b>JavaScript aktivieren</b></div>
+<div>
+Die Nutzung der Website <a href="http://www.comdirect.de/">www.comdirect.de</a> ist ohne JavaScript nicht in vollem Umfang m&ouml;glich. Bitte &auml;ndern Sie die Einstellung in Ihrem Browser wie folgt:
+</div>
+<div>
+<p class="fSmall"><b>Firefox</b><br />
+W&auml;hlen Sie: Extras - Einstellungen - Web-Features - vor &quot;Java aktivieren&quot; und &quot;Java Script aktivieren&quot; jeweils ein H&auml;kchen setzen.
+</p>
+<p class="fSmall"><b>Internet Explorer</b><br />
+W&auml;hlen Sie: Extras - Internetoptionen - Sicherheit - (Weltkugel) Internet - Standardstufe.
+</p>
+<p class="fSmall"><b>Mozilla</b><br />
+W&auml;hlen Sie unter Bearbeiten - Einstellungen - Erweitert - Scripts und Plugins - JavaScript aktivieren.
+</p>
+<p class="fSmall"><b>Netscape</b><br />
+W&auml;hlen Sie: Bearbeiten - Einstellungen - Erweitert - JavaScript aktivieren.<br />
+</p>
+<p class="fSmall"><b>Opera</b><br />
+W&auml;hlen Sie: Datei - Einstellungen - Multimedia - JavaScript aktivieren.
+</p>
+<p class="fSmall"><b>Safari</b><br />
+W&auml;hlen Sie: Safari - Einstellungen - Sicherheit - JavaScript aktivieren.
+</p>
+</div>
+<div class="fSmall">
+Sollten Sie weiterhin Probleme mit dem Zugriff per Internet haben, wenden Sie sich bitte w&auml;hrend unserer <a href="/co/redirect.jsp?url=2017" target="_blank">Servicezeiten</a> an unsere Hotline unter der Rufnummer 01803-33 64 40.
+</div><br /><br />
+</noscript>
+</div>
+<div id="wartungstext">
+Wenn Sie alle Funktionen inklusive Konto & Depot nutzen wollen, melden Sie sich bitte mit Ihrer 8-stelligen Zugangsnummer und 6-stelligen PIN an.<BR> <BR> M&ouml;chten Sie nur "Meine comdirect" nutzen (z.B. Musterdepots), gen&uuml;gt die Anmeldung mit Ihrem Benutzernamen und Passwort.
+</div>
+<div id="hinweistexte">
+<p class="fSmall fcRed"></p>
+</div>
+</div>
+<div class="outerCard width478">
+<div class="topCard"><div><span></span></div></div>
+<div class="innerCard">
+<div class="cardContent">
+<div class="width360">
+<div class="fSmall fcRed spaceLeft17">
+
+</div>
+
+<form name="login" id="login" onsubmit="hideLayer( document.getElementById('container3') , 'NS6Allowed');if ( !bMSIE && !bMozilla121 && !bSafari){return false;}" autocomplete="off" method="post" action="/servlet/Y29tZGlyZWN0">
+<input type="hidden" name="transactionID" id="transactionID" value="1200745591890" />
+<div class="form spaceLeft17">
+<p class="formLeft"><b>Zugangsnummer oder Benutzername</b></p>
+<div class="formRight width200 formBorder">
+<input type="text" name="param1" id="param1" maxlength="38" class="fSmall" style="width:180px;" onfocus="setEnterFlag(2);" />
+</div>
+</div>
+<div class="form paddingTop5 spaceLeft17">
+<p class="formLeft"><b>6-stellige PIN oder Passwort</b></p>
+<div class="formRight width200 formBorder">
+<input type="password" name="param2" id="param2" maxlength="16" class="fSmall" style="width:180px;" />
+</div>
+</div>
+
+<div class="form paddingTop5 spaceLeft17">
+<p class="formLeft"><b>Direkt zu:</b></p>
+<div class="formRight width200 formBorder">
+<select name="direktzu" id="direktzu" style="width:190px;" class="fSmall">
+<option value="">Pers&ouml;nlicher Bereich</option>
+<option value="DepotUebersicht">Depot&uuml;bersicht</option>
+<option value="DepotUmsaetze">Depotums&auml;tze</option>
+<option value="Order">Inlandsorder</option>
+<option value="DepotAusserboerslicherhandel">LiveTrading</option>
+<option value="DepotOrderbuch">Orderbuch</option>
+<option value="KontoUebersicht">Konto&uuml;bersicht</option>
+<option value="KontoUmsaetze">Kontoums&auml;tze</option>
+<option value="KontoUeberweisung">&Uuml;berweisung</option>
+<option value="">-----------------</option>
+<option value="Musterdepot">Musterdepot</option>
+<option value="InformerStartseite">Meine Informer Startseite</option>
+</select>
+</div>
+</div>
+
+<div class="cardCol paddingTop15 spaceLeft17">
+<div class="alignRight " id="container3">
+<a href="javascript:document.login.submit();" class="fLinkList" onmouseover="window.status='';return true;"><b>Login</b><input type="image" src="/common/images/icons/next.gif" class="icon" alt="Login" title="Login" border="0" /></a>
+</div>
+<div class="fontSize10 paddingTop10">
+<a href="http://coma.comdirect.de/member/ssomanager/personalization/forgottenlogindata/OverviewVP.do">Zugangsdaten vergessen?</a>
+</div>
+</div>
+</form>
+</div>
+<div class="spacerHeight25"><span></span></div>
+</div>
+<div class="bottomCard"><div><span></span></div></div>
+</div>
+<div class="bottomCardBorder"><span></span></div>
+</div>
+<div class="clear"><span></span></div>
+<div class="spacerHeight20"><span></span></div>
+<div class="textblock fontSize10 fcGrey66">
+<p class="floatLeft width20"><img src="/common/images/icons/sicherheit.gif" width="12" height="14" alt="" border="0" />&nbsp;</p>
+<p class="floatLeft width478">
+<b>Bei Finanzgeschäften ist hohe Sicherheit selbstverständlich.<BR></b> Die comdirect setzt auf ihren Systemen und bei der Datenübertragung sichere und anerkannte Standards zum Schutz der Online-Nutzung von Konto und Depot ein. Im Bereich <a href="http://www.comdirect.de/index.html?gourl=http://coma.comdirect.de/cms/direct/cori3629_htsicherheit.html" class="fcGrey66">Sicherheit</a> finden Sie weitere Erläuterungen zu unseren Sicherheitsmaßnahmen sowie Hinweise und Tipps zu Ihrem Beitrag zu einer sicheren Nutzung unseres Internet-Angebotes.
+<br /><br />
+Hinweis: Schützen Sie sich gegen Betrugsversuche, bei denen Sie per E-Mail auf gefälschte Internet-Seiten gelockt und zur Eingabe Ihrer Zugangsdaten aufgefordert werden. <a href="http://www.comdirect.de/?gourl=http://coma.comdirect.de/cms/support/pages/sicherheit/cori3673_schutz_phishing.html" class="fcGrey66">Was Sie dagegen tun können?</a>
+</p>
+</div>
+</div>
+<div class="rightColumn">
+<div class="infoboxHeader">Meine comdirect</div>
+<div class="infoboxContent">
+<p>Registrieren und kostenlos alle Services von "Meine comdirect" nutzen!</p>
+<div class="alignRight paddingTop5">
+<a href="http://www.comdirect.de/?gourl=http://coma.comdirect.de/member/ssomanager/personalization/registration/StartRegistrationRH.do" class="fLinkList"><b>Kostenlos registrieren</b><img src="/common/images/icons/next.gif" class="icon" width="16" height="16" alt="Kostenlos registrieren" title="Kostenlos registrieren" border="0" /></a>
+</div>
+</div>
+<div class="infoboxHeader">Produkte &amp; Leistungen</div>
+<div class="infoboxContent">
+<p>
+<a href="http://www.comdirect.de/?gourl=http://www.comdirect.de/static/cmsroot/cms/products/pages/cori0378_subhpprodukte.cml">Konto- und Depoter&ouml;ffnung</a> online - schnell und einfach. Oder bestellen Sie Ihr kostenloses <a href="http://www.comdirect.de/?gourl=http://coma.comdirect.de/ance/forms/informativeliterature/StartInformativeLiteratureRH.do">Infopaket</a>.
+</p>
+<div class="alignRight paddingTop5">
+<a href="http://www.comdirect.de/?gourl=http://www.comdirect.de/static/cmsroot/cms/products/pages/cori0378_subhpprodukte.cml" class="fLinkList"><b>Produkte &amp; Leistungen</b><img src="/common/images/icons/next.gif" class="icon" width="16" height="16" alt="Produkte & Leistungen" title="Produkte & Leistungen" border="0" /></a>
+</div>
+</div>
+<div class="infoboxHeader">Neu auf der Website</div>
+<div class="infoboxContent">
+<p>Alle aktuellen Neuerungen der comdirect Website auf einen Blick.</p>
+<div class="alignRight paddingTop5">
+<a href="http://www.comdirect.de/index.html?gourl=http://coma.comdirect.de/cms/support/pages/website/cori2792_websitenews.cml" class="fLinkList"><b>Neu auf der Website</b><img src="/common/images/icons/next.gif" class="icon" width="16" height="16" alt="Neu auf der Website" title="Neu auf der Website" border="0" /></a>
+</div>
+</div>
+<div class="infoboxHeader">Testkonto</div>
+<div class="infoboxContent">
+<p>
+Sind Sie noch kein comdirect Kunde? Lernen Sie unser Online-Angebot und die Funktionsweise des Kundenbereichs unverbindlich und kostenfrei kennen.
+</p>
+<div class="alignRight paddingTop5">
+<a href="http://www.comdirect.de/testkonto" target="_blank" class="fLinkList"><b>Testkonto starten</b><img src="/common/images/icons/next.gif" class="icon" width="16" height="16" alt="Kostenlos registrieren" title="Testkonto starten" border="0" /></a>
+</div>
+</div>
+</div>
+<div class="footer">
+
+<a href="http://www.comdirect.de/index.html?gourl=http://coma.comdirect.de/cms/direct/cori0806_impressum.cml" class="noDecoration ccMGE2">Impressum</a>&nbsp;|&nbsp;
+<a href="http://www.comdirect.de/index.html?gourl=http://coma.comdirect.de/cms/direct/cori0807_datenschutzerkl.cml" class="noDecoration ccMzE2">Datenschutz</a>&nbsp;|&nbsp;
+<a href="http://www.comdirect.de/index.html?gourl=http://coma.comdirect.de/cms/direct/cori3629_htsicherheit.html" class="noDecoration ccODkx">Sicherheit</a>&nbsp;|&nbsp;
+<a href="http://www.comdirect.de/index.html?gourl=http://coma.comdirect.de/cms/direct/cori0805_nutzungsbed.cml" class="noDecoration ccMTc5">Nutzungsbedingungen</a>&nbsp;|&nbsp;
+<a href="http://www.comdirect.de/static/pdf/corp0058.pdf" class="noDecoration ccMjAz" target="_blank">AGB</a>&nbsp;|&nbsp;
+<a href="javascript:openSitemap('http://coma.comdirect.de/cms/direct/cori1154_index.html',790,620,0)" class="noDecoration ccYjQ1">Sitemap</a>&nbsp;|&nbsp;
+<a href="http://www.comdirect.de/index.html?gourl=http://coma.comdirect.de/cms/direct/cori0324_fc_start.cml" class="noDecoration">Formulare</a>&nbsp;|&nbsp;
+<a href="http://www.comdirect.de/index.html?gourl=http://www.comdirect.de/static/cmsroot/cms/company/dynpages/german/presse/cori0809_presse.cml" class="noDecoration ccMw==">Presse</a>&nbsp;|&nbsp;
+<a href="http://www.comdirect.de/index.html?gourl=http://www.comdirect.de/static/cmsroot/cms/company/dynpages/german/investor_relations/cori0808_ir_start.cml" class="noDecoration">Investor Relations</a>
+
+
+</div>
+</div>
+</body>
+</html>

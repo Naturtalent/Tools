@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+
+	<cvs>
+		<name>dev.eclipse.org</name>
+		<connectionType>pserver</connectionType>
+		<user>anonymous</user>
+		<password>anonymous</password>
+		<host>dev.eclipse.org</host>
+		<repositoryPath>/cvsroot/eclipse</repositoryPath>
+	</cvs>
+
+	<cvs>
+		<name>de.spiritlink</name>
+		<connectionType>pserver</connectionType>
+		<user>anonymous</user>
+		<password>anonymous</password>
+		<host>85.25.64.138</host>
+		<repositoryPath>/usr/local/cvsroot</repositoryPath>
+	</cvs>
+
+	<cvs>
+		<name>OO</name>
+		<connectionType>pserver</connectionType>
+		<user>anoncvs</user>
+		<password>anonymous</password>
+		<host>anoncvs.services.openoffice.org</host>
+		<repositoryPath>/cvs</repositoryPath>
+	</cvs>
+
+	<cvs>
+		<name>Eclipse</name>
+		<connectionType>pserver</connectionType>
+		<user>anonymous</user>
+		<password>anonymous</password>
+		<host>dev.eclipse.org</host>
+		<repositoryPath>/cvsroot/eclipse</repositoryPath>
+	</cvs>
+
+	<cvs>
+		<name>Webtools</name>
+		<connectionType>pserver</connectionType>
+		<user>anonymous</user>
+		<password>anonymous</password>
+		<host>dev.eclipse.org</host>
+		<repositoryPath>/cvsroot/webtools</repositoryPath>
+	</cvs>
+
+	<cvs>
+		<name>svnPlugin</name>
+		<connectionType>pserver</connectionType>
+		<user>anonymous</user>
+		<password>anonymous</password>
+		<host>svgplugin.cvs.sourceforge.net</host>
+		<repositoryPath>/cvsroot/svgplugin</repositoryPath>
+	</cvs>
+
+
+	<svn>
+		<repository>http://svn.services.openoffice.org/ooo</repository>
+	</svn>
+
+	<svn>
+		<repository>http://tarlog-plugins.googlecode.com/svn</repository>
+	</svn>
+	
+	<svn>
+		<repository>https://olip.homelinux.org:11443/svn/repos2</repository>
+	</svn>
+	
+	<svn>
+		<repository>http://noa-libre.googlecode.com/svn/trunk/</repository>
+	</svn>
+	
+
+	<svn>
+		<repository></repository>
+	</svn>
+	
+	<git>
+		<repository>git://egit.eclipse.org/jgit.git</repository>
+	</git>
+
+	<git>
+		<repository>git://egit.eclipse.org/egit.git</repository>
+	</git>
+	
+	
+	
+</root>

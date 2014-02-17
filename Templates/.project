@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>Templates</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+	</buildSpec>
+	<natures>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>Icons</name>
+			<type>2</type>
+			<location>D:/Daten/IDE Workspace/Naturtalent/Icons</location>
+		</link>
+		<link>
+			<name>org.eclipse.ui.workbench</name>
+			<type>2</type>
+			<location>D:/Naturtalent4/workspaces/telekom/.metadata/.plugins/org.eclipse.ui.workbench</location>
+		</link>
+	</linkedResources>
+</projectDescription>

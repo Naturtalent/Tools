@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><templates><template autoinsert="false" context="e4" deleted="false" description="der momentan selektierte Typ ueber den SelectionService injezieren " enabled="true" name="Inject SelectionService">@Named(IServiceConstants.ACTIVE_SELECTION) @Optional ${type} ${name}</template><template autoinsert="true" context="e4" deleted="false" description="einen Logger erzeugen" enabled="true" name="Logger">private Log log = LogFactory.getLog(this.getClass());</template><template autoinsert="true" context="e4" deleted="false" description="Checked Resource auf Project, Folder, File" enabled="true" name="ResourceProjectFolder">if(iResource != null &amp;&amp; (iResource.getType() &amp; (IResource.FOLDER) | (IResource.PROJECT)) != 0)
+{
+}</template><template autoinsert="true" context="e4" deleted="false" description="den ApplicationContext ermitteln" enabled="true" name="GetApplicationContecxt">MApplication currentApplication = E4Workbench.getServiceContext().get(IWorkbench.class).getApplication();</template><template autoinsert="true" context="e4" deleted="false" description="eine Part ermitteln" enabled="true" name="findPart">MApplication currentApplication = E4Workbench.getServiceContext().get(IWorkbench.class).getApplication();
+EPartService partService = currentApplication.getContext().get(EPartService.class);
+MPart part = partService.findPart(${partID});</template><template autoinsert="true" context="e4" deleted="false" description="einen partbezogenen SelectionService ermtteln" enabled="true" name="findSelectionService">MApplication currentApplication = E4Workbench.getServiceContext().get(IWorkbench.class).getApplication();
+EPartService partService = currentApplication.getContext().get(EPartService.class);
+MPart part = partService.findPart(${partID});
+					
+ESelectionService selectionService = part.getContext().get(ESelectionService.class);
+Object selObject = selectionService.getSelection();</template><template autoinsert="true" context="e4" deleted="false" description="URL zu einem Pfad im PlugIn" enabled="true" name="pluginURL">Bundle bundle = FrameworkUtil.getBundle(this.getClass());
+BundleContext bundleContext = bundle.getBundleContext();
+URL url = FileLocator.find(bundleContext.getBundle(),new Path(${path}), null);
+try
+{
+	url = FileLocator.resolve(url);
+}
+catch (IOException e)
+{
+	e.printStackTrace();
+}
+</template><template autoinsert="true" context="e4" deleted="false" description="IProject ermitteln" enabled="true" name="getIProject">IProject iProject = ResourcesPlugin.getWorkspace().getRoot().getProject(${projectName});
+if(iProject.exists())
+{
+}</template><template autoinsert="true" context="e4" deleted="false" description="den EventBroker ermitteln" enabled="true" name="findEventBroker">MApplication currentApplication = E4Workbench.getServiceContext().get(IWorkbench.class).getApplication();
+IEventBroker eventBroker = currentApplication.getContext().get(IEventBroker.class);</template><template autoinsert="true" context="e4" deleted="false" description="EObject im Composite anzeigen (View, Dialog, Wizard)" enabled="true" name="viewEObject">/**
+ * Create contents of the wizard.
+ * @param parent
+ */
+public void createControl(Composite parent)
+{
+	Composite container = new Composite(parent, SWT.NULL);
+	setControl(container);
+	container.setLayout(new GridLayout(2, false));
+			
+	try
+	{		
+		ECPSWTViewRenderer.INSTANCE.render(container, (EObject) ${eObject});
+	} catch (ECPRendererException e1)
+	{
+		// TODO Auto-generated catch block
+		e1.printStackTrace();
+	}
+}</template><template autoinsert="true" context="e4" deleted="false" description="Rueckgabe des in dem IProject persistent gespeicherten  Namen" enabled="true" name="getIProjectName">name = iProject.getPersistentProperty(INtProject.projectNameQualifiedName);</template></templates>

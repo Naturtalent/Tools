@@ -1,0 +1,5 @@
+
+
+	ESelectionService selectionService = (ESelectionService) part.getContext().get(
+							ESelectionService.class.getName());
+							

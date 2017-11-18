@@ -10,14 +10,9 @@
 	</natures>
 	<linkedResources>
 		<link>
-			<name>Icons</name>
-			<type>2</type>
-			<location>D:/Daten/IDE Workspace/Naturtalent/Icons</location>
-		</link>
-		<link>
 			<name>org.eclipse.ui.workbench</name>
 			<type>2</type>
-			<location>D:/Naturtalent4/workspaces/telekom/.metadata/.plugins/org.eclipse.ui.workbench</location>
+			<location>/home/dieter/D::/Naturtalent4/workspaces/telekom/.metadata/.plugins/org.eclipse.ui.workbench</location>
 		</link>
 	</linkedResources>
 </projectDescription>

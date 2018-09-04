@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: P2
+Bundle-SymbolicName: it.naturtalent.p2
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: it.naturtalent.p2.Activator
+Bundle-Vendor: Dieter Apel
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ it.wp.common.io,
+ it.naturtalent.jdom
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Automatic-Module-Name: it.naturtalent.p2
+Bundle-ActivationPolicy: lazy

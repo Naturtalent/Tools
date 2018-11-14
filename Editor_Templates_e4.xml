@@ -44,6 +44,22 @@ public void createControl(Composite parent)
 		// TODO Auto-generated catch block
 		e1.printStackTrace();
 	}
+
+	// oder
+	try
+	{		
+		ViewModelContext vmc = ViewModelContextFactory.INSTANCE.createViewModelContext(
+					ViewProviderHelper.getView((EObject) ${eObject}, null),
+					(EObject) ${eObject}, new DefaultReferenceService());			
+		ECPSWTViewRenderer.INSTANCE.render(container,vmc);
+
+	} catch (ECPRendererException e1)
+	{
+		// TODO Auto-generated catch block
+		e1.printStackTrace();
+	}
+
+
 }</template><template autoinsert="true" context="e4" deleted="false" description="Rueckgabe des in dem IProject persistent gespeicherten  Namen" enabled="true" name="getIProjectName">name = iProject.getPersistentProperty(INtProject.projectNameQualifiedName);</template><template autoinsert="true" context="e4" deleted="false" description="Erweitertes detailiertes MessageDialog" enabled="true" name="MessageDialogDetail">MessageDialog msgDialog = new MessageDialog(shell,
 						Messages.PastePassword_LoginLabel, null,
 						Messages.bind(Messages.PastePassword_InfoClipboard,loginData.getApplication()),
@@ -135,4 +151,189 @@ public void createControl(Composite parent)
 		activeWindowContext.activate();
 		MPart currentActivePart = partService.findPart(NtProjectView.NTPROJECT_VIEW_ID);
 		partService.activate(currentActivePart);</template><template autoinsert="true" context="e4" deleted="false" description="Eine Klasse mit ContextInjection Verhalten erzeugen" enabled="true" name="ContextInjectionFectory">IEclipseContext context;
-Object newClass = ContextInjectionFactory.make(${classname}.class, context);</template><template autoinsert="true" context="e4" deleted="false" description="ein EObject kopieren" enabled="true" name="copyEMFObject">EObject copyObject = EcoreUtil.copy(eObject);</template></templates>
+Object newClass = ContextInjectionFactory.make(${classname}.class, context);</template><template autoinsert="true" context="e4" deleted="false" description="ein EObject kopieren" enabled="true" name="copyEMFObject">EObject copyObject = EcoreUtil.copy(eObject);</template><template autoinsert="true" context="e4" deleted="false" description="eine Stringaufzaehlung" enabled="true" name="Enum String">	private static String [] extensions = {"odt","odg","ods"};
+	private static enum FileExtension
+	{
+		TextFile,
+		DrawFile,
+		CalcFile;
+				
+		public static String getExtension(FileExtension fileExtension)
+		{
+			String ext ="";
+			switch (fileExtension)
+				{
+					case TextFile:
+						return extensions[0];
+						
+					case DrawFile:
+						return extensions[1];
+
+					case CalcFile:
+						return extensions[2];
+				}
+			return ext;
+		}
+	}
+	</template><template autoinsert="true" context="e4" deleted="false" description="Beispiel EMF AddCommand " enabled="true" name="AddCommand">// modulglobal erforderlich fuer Commands und 'undo' - Mechanismus
+EObject container = OfficeUtils.getReferenzClass(FooterPreferences.TELEKOM_REFERENZCLASS);				
+EditingDomain domain = AdapterFactoryEditingDomain.getEditingDomainFor(container);				
+EReference eReference = AddressPackage.eINSTANCE.getReferenzenClass_ReferenzClassReferenzen();
+
+// ein neues  EMFObject erzeugen
+EClass referenceGroupClass = AddressPackage.eINSTANCE.getReferenzGruppe();
+ReferenzGruppe referenceGroup = (ReferenzGruppe) EcoreUtil.create(referenceGroupClass);	
+
+// neues Object via AddCommand dem Modell hinzufuegen
+// domain - hier wird Command ausgefuehrt
+// container - das Parentobject
+// das Feature (in diesem Fall eine Referenz) 
+// das neue Object
+Command addCommand = AddCommand.create(domain, container , eReference, referenceGroup);
+domain.getCommandStack().execute(addCommand);
+
+</template><template autoinsert="true" context="e4" deleted="false" description="alle Commands im EditingDomain zuruecknehmen" enabled="true" name="EMF undo">while(domain.getCommandStack().canUndo())
+	domain.getCommandStack().undo();</template><template autoinsert="true" context="e4" deleted="false" description="die Spalte 'Validation Status' verstecken" enabled="true" name="EMF Table NoValidationColumn">import javax.inject.Inject;
+
+import org.eclipse.emf.ecp.view.spi.context.ViewModelContext;
+import org.eclipse.emf.ecp.view.spi.table.model.VTableControl;
+import org.eclipse.emf.ecp.view.spi.table.swt.TableControlSWTRenderer;
+import org.eclipse.emf.ecp.view.spi.util.swt.ImageRegistryService;
+import org.eclipse.emf.ecp.view.template.model.VTViewTemplateProvider;
+import org.eclipse.emf.ecp.view.template.style.tableValidation.model.VTTableValidationStyleProperty;
+import org.eclipse.emfforms.spi.common.report.ReportService;
+import org.eclipse.emfforms.spi.core.services.databinding.EMFFormsDatabinding;
+import org.eclipse.emfforms.spi.core.services.databinding.emf.EMFFormsDatabindingEMF;
+import org.eclipse.emfforms.spi.core.services.editsupport.EMFFormsEditSupport;
+import org.eclipse.emfforms.spi.core.services.label.EMFFormsLabelProvider;
+
+public class FootNotesTableControlRenderer extends TableControlSWTRenderer
+{
+	@Inject
+	public FootNotesTableControlRenderer(VTableControl vElement,
+			ViewModelContext viewContext, ReportService reportService,
+			EMFFormsDatabinding emfFormsDatabinding,
+			EMFFormsLabelProvider emfFormsLabelProvider,
+			VTViewTemplateProvider vtViewTemplateProvider,
+			ImageRegistryService imageRegistryService,
+			EMFFormsEditSupport emfFormsEditSupport)
+	{
+		super(vElement, viewContext, reportService, (EMFFormsDatabindingEMF) emfFormsDatabinding,
+				emfFormsLabelProvider, vtViewTemplateProvider, imageRegistryService,
+				emfFormsEditSupport);
+		
+		
+	}
+
+	/*
+	 * Validation Spalte unsichtbar machen
+	 * 
+	 * @see org.eclipse.emf.ecp.view.spi.table.swt.TableControlSWTRenderer#getTableValidationStyleProperty()
+	 */
+	@Override
+	protected VTTableValidationStyleProperty getTableValidationStyleProperty()
+	{
+		VTTableValidationStyleProperty styleProperty = super.getTableValidationStyleProperty();		
+		styleProperty.setColumnWidth(1);		
+		return styleProperty;
+	}
+}</template><template autoinsert="true" context="e4" deleted="false" description="angepasster Referencerenderer" enabled="true" name="EMF Reference NoAddButton">import javax.inject.Inject;
+
+import org.eclipse.e4.core.di.annotations.Optional;
+import org.eclipse.e4.core.services.events.IEventBroker;
+import org.eclipse.e4.ui.di.UIEventTopic;
+import org.eclipse.e4.ui.internal.workbench.E4Workbench;
+import org.eclipse.e4.ui.model.application.MApplication;
+import org.eclipse.e4.ui.workbench.IWorkbench;
+import org.eclipse.emf.ecp.view.internal.control.multireference.MultiReferenceSWTRenderer;
+import org.eclipse.emf.ecp.view.spi.context.ViewModelContext;
+import org.eclipse.emf.ecp.view.spi.model.VControl;
+import org.eclipse.emf.ecp.view.spi.renderer.NoPropertyDescriptorFoundExeption;
+import org.eclipse.emf.ecp.view.spi.renderer.NoRendererFoundException;
+import org.eclipse.emf.ecp.view.spi.util.swt.ImageRegistryService;
+import org.eclipse.emf.ecp.view.template.model.VTViewTemplateProvider;
+import org.eclipse.emfforms.spi.common.report.ReportService;
+import org.eclipse.emfforms.spi.core.services.databinding.EMFFormsDatabinding;
+import org.eclipse.emfforms.spi.core.services.label.EMFFormsLabelProvider;
+import org.eclipse.emfforms.spi.swt.core.layout.SWTGridCell;
+import org.eclipse.jface.viewers.ISelectionChangedListener;
+import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.SelectionChangedEvent;
+import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.jface.viewers.TableViewer;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
+
+import it.naturtalent.e4.office.ui.OfficeUtils;
+import it.naturtalent.office.model.address.Referenz;
+
+public class ReferenzGruppeRenderer extends MultiReferenceSWTRenderer
+{
+
+	private IEventBroker eventBroker;
+	
+	private Button btnAddNew;
+	
+	@Inject
+	public ReferenzGruppeRenderer(VControl vElement,
+			ViewModelContext viewContext, ReportService reportService,
+			EMFFormsDatabinding emfFormsDatabinding,
+			EMFFormsLabelProvider emfFormsLabelProvider,
+			VTViewTemplateProvider vtViewTemplateProvider,
+			ImageRegistryService imageRegistryService)
+	{
+		super(vElement, viewContext, reportService, emfFormsDatabinding,
+				emfFormsLabelProvider, vtViewTemplateProvider, imageRegistryService);
+		
+		MApplication currentApplication = E4Workbench.getServiceContext().get(IWorkbench.class).getApplication();
+		eventBroker = currentApplication.getContext().get(IEventBroker.class);
+		
+	}
+
+	@Override
+	protected Control renderMultiReferenceControl(SWTGridCell cell,
+			Composite parent)
+			throws NoRendererFoundException, NoPropertyDescriptorFoundExeption
+	{
+		Control control = super.renderMultiReferenceControl(cell, parent);
+
+		TableViewer tableViewer = getTableViewer();
+		tableViewer.addSelectionChangedListener(new ISelectionChangedListener()
+		{			
+			@Override
+			public void selectionChanged(SelectionChangedEvent event)
+			{
+				IStructuredSelection selection = ((IStructuredSelection) event.getSelection());
+				Object selObj = selection.getFirstElement();
+				if (selObj != null)
+				{
+					if (eventBroker != null)
+						eventBroker.send(OfficeUtils.REFERENZGROUP_SELECTREFERENCEEVENT, selObj);					
+				}
+			}
+		});
+		
+		return control;
+	}
+	
+	@Inject 
+	@Optional
+	public void handleReferenceSelection(@UIEventTopic(OfficeUtils.REFERENZGROUP_REQUESTSELECTREFERENCEEVENT) Object reference )
+	{
+		if (reference instanceof Referenz)		
+			getTableViewer().setSelection(new StructuredSelection(reference));
+	}
+
+	
+	
+	@Override
+	protected boolean showAddExistingButton()
+	{
+		return false;
+	}
+
+
+	
+}
+</template></templates>

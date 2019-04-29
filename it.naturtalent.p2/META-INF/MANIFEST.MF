@@ -8,7 +8,9 @@ Bundle-Vendor: Dieter Apel
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  it.wp.common.io,
- it.naturtalent.jdom
+ it.naturtalent.jdom,
+ org.eclipse.emf.emfstore.common
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Automatic-Module-Name: it.naturtalent.p2
 Bundle-ActivationPolicy: lazy
+Import-Package: org.apache.commons.lang3

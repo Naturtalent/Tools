@@ -65,37 +65,89 @@ public class IconExe {
 	* Note 4. This function modifies the content of the executable program and may cause
 	* its corruption.
 	*/
-	public static void main(String[] args) throws Exception {
-		if (args.length < 2) {
-			System.err.println("Usage: IconExe <windows executable> <ico file>"); //$NON-NLS-1$
+	public static void main(String[] args) throws Exception
+	{
+		if (args.length < 2)
+		{
+			System.err
+					.println("Usage: IconExe <windows executable> <ico file>"); //$NON-NLS-1$
 			return;
 		}
 		ImageLoader loader = new ImageLoader();
 
 		List<ImageData> images = new ArrayList<>();
-		for (int i = 1; i < args.length; i++) {
-			try {
-				//An ICO should contain 7 images, a BMP will contain 1
+		for (int i = 1; i < args.length; i++)
+		{
+			try
+			{
+				// An ICO should contain 7 images, a BMP will contain 1
 				ImageData[] current = loader.load(args[i]);
-				for (int j = 0; j < current.length; j++) {
+				for (int j = 0; j < current.length; j++)
+				{
 					images.add(current[j]);
 				}
-			} catch (RuntimeException e) {
-				//ignore so that we process the other images
+			} catch (RuntimeException e)
+			{
+				// ignore so that we process the other images
 			}
 		}
 		ImageData[] data = new ImageData[images.size()];
 		data = images.toArray(data);
 
 		List<IconResInfo> unchangedIcons = unloadIcons(args[0], data);
-		if (unchangedIcons.size() != 0) {
-			System.err.println(String.format("[IconExe] Error - %d original icon(s) not replaced in %s:", unchangedIcons.size(), args[0])); //$NON-NLS-1$
-			for (IconResInfo icon : unchangedIcons) {
+		if (unchangedIcons.size() != 0)
+		{
+			System.err.println(String.format(
+					"[IconExe] Error - %d original icon(s) not replaced in %s:", //$NON-NLS-1$
+					unchangedIcons.size(), args[0]));
+			for (IconResInfo icon : unchangedIcons)
+			{
 				ImageData iconData = icon.data;
-				System.err.println(String.format("\t- %dx%d, %d bits, %d byte(s) @ %d", iconData.height, iconData.width, iconData.depth, icon.size, icon.offset)); //$NON-NLS-1$
+				System.err.println(
+						String.format("\t- %dx%d, %d bits, %d byte(s) @ %d", //$NON-NLS-1$
+								iconData.height, iconData.width, iconData.depth,
+								icon.size, icon.offset));
 			}
-			System.err.println("[IconExe] For more details, see https://git.eclipse.org/c/equinox/rt.equinox.p2.git/tree/bundles/org.eclipse.equinox.p2.publisher.eclipse/src/org/eclipse/pde/internal/swt/tools/IconExe.java"); //$NON-NLS-1$
+			System.err.println(
+					"[IconExe] For more details, see https://git.eclipse.org/c/equinox/rt.equinox.p2.git/tree/bundles/org.eclipse.equinox.p2.publisher.eclipse/src/org/eclipse/pde/internal/swt/tools/IconExe.java"); //$NON-NLS-1$
 		}
+	}
+	
+	/**
+	 * @throws IOException 
+	 * @throws FileNotFoundException 
+	 * 
+	 */
+	static void unloadICO(String windowLauncher, String launcherICO) throws FileNotFoundException, IOException
+	{
+		List<ImageData> images = new ArrayList<>();
+		
+		ImageLoader loader = new ImageLoader();
+		ImageData[] current = loader.load(launcherICO);
+		for (int j = 0; j < current.length; j++)		
+			images.add(current[j]);
+		
+		ImageData[] data = new ImageData[images.size()];
+		data = images.toArray(data);
+
+		List<IconResInfo> unchangedIcons = unloadIcons(windowLauncher, data);
+		if (unchangedIcons.size() != 0)
+		{
+			System.err.println(String.format(
+					"[IconExe] Error - %d original icon(s) not replaced in %s:", //$NON-NLS-1$
+					unchangedIcons.size(), windowLauncher));
+			for (IconResInfo icon : unchangedIcons)
+			{
+				ImageData iconData = icon.data;
+				System.err.println(
+						String.format("\t- %dx%d, %d bits, %d byte(s) @ %d", //$NON-NLS-1$
+								iconData.height, iconData.width, iconData.depth,
+								icon.size, icon.offset));
+			}
+			System.err.println(
+					"[IconExe] For more details, see https://git.eclipse.org/c/equinox/rt.equinox.p2.git/tree/bundles/org.eclipse.equinox.p2.publisher.eclipse/src/org/eclipse/pde/internal/swt/tools/IconExe.java"); //$NON-NLS-1$
+		}
+		
 	}
 
 	/* Implementation */

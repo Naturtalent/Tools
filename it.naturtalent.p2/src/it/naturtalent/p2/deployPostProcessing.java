@@ -26,7 +26,7 @@ public class deployPostProcessing
 	private static final String PRODUCTZIPDIR = "/home/dieter/Repositories2019/NaturtalentRCP/products/it.naturtalent.produkt/target/products";
 	private static final String LINUX_PRODUCTZIPFILE = "RCP product-linux.gtk.x86_64.zip";
 	private static final String WINDOWS_PRODUCTZIPFILE = "RCP product-win32.win32.x86_64.zip";
-	private static final String TEMP_DESTINATION_DIR = "/home/dieter/temp/deploy";
+	private static final String TEMP_DESTINATION_DIR = "/home/dieter/deploy";
 	public static final int EOF = (-1);
 	
 	private static final String LINUX_OS = "linux";

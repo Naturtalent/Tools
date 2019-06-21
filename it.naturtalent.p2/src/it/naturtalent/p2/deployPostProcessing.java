@@ -8,13 +8,19 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Enumeration;
+import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipException;
 import java.util.zip.ZipFile;
 import java.util.zip.ZipOutputStream;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.filefilter.FileFilterUtils;
+import org.apache.commons.io.filefilter.IOFileFilter;
+import org.apache.commons.io.filefilter.TrueFileFilter;
 import org.apache.commons.lang3.StringUtils;
 
 
@@ -35,66 +41,117 @@ public class deployPostProcessing
 	// jre-Runtimes
 	private static final String WIN_JAVA6 = "/home/dieter/Repositories2019/Tools/it.naturtalent.p2/JRE/java8/jre";
 
-	private static final String WINDOWS_LAUNCHER = TEMP_DESTINATION_DIR + "/" + WINDOWS_OS + "/" + "NaturTalent1.exe";
+	private static final String WINDOWS_LAUNCHER = TEMP_DESTINATION_DIR + "/" + WINDOWS_OS + "/" + "NaturTalent.exe";
 			
 	//private static final String WINDOWS_LAUNCHER_IMAGE = "/home/dieter/Repositories-2019-032/Tools/it.naturtalent.tools/NaturtalentLauchIcons/Novak/ico/nt.ico";
-	private static final String WINDOWS_LAUNCHER_IMAGE = "/home/dieter/Repositories-2019-032/Tools/it.naturtalent.tools/NaturtalentLauchIcons/Novak/nt.ico";
+	private static final String WINDOWS_LAUNCHER_IMAGE = "/home/dieter/Repositories2019/Tools/it.naturtalent.tools/Naturtalent Lauch Icons/Novak/nt.ico";
+	
+	private static File deployDir;
 	
 	public static void main(String[] args)
 	{
 		
+		// entpacken des mit Maven erzeugten Produkt-Zip
 		unzipDeploy_Os(WINDOWS_OS);
-		deployProcessing(WINDOWS_OS);
-		zipDeploy(WINDOWS_OS);
-
 		
-		//zipDeploy(WINDOWS_OS);
+		// ausgewaehlte Plugins entfernen
+		List<String>toSelectPugin = new ArrayList<String>();
+		toSelectPugin.add("org.eclipse.ui.themes");
+		deleteSelectedPlugins(toSelectPugin);
+		
+		// weitere Manipulationen vornehmen
+		deployProcessing(WINDOWS_OS);
+		
+		// wieder in einem neuem Produkt-Zip packen
+		zipDeploy(WINDOWS_OS);
 		
 		System.out.println("Deployprocessing beendet");
 	}
 	
 	/**
+	 * Die von Maven erzeugte Produkt-Zip-Datei im Zielverzeichnis entpacken.
+	 * 
 	 * @param os
 	 */
 	public static void unzipDeploy_Os(String os)
 	{
 		String srcZipFile;
 		
-		 // Zielverzeichnis
-		 File targetDir = new File(TEMP_DESTINATION_DIR);
+		 // in dieses Verzeichnis wird entpackt
+		deployDir = new File(TEMP_DESTINATION_DIR);
 		 
+		 // von Maven erzeugte Produktzips (OS-abhaengig)
 		 if(StringUtils.equals(os, LINUX_OS))
 		 {
-			 targetDir = new File(targetDir, LINUX_OS);
+			 deployDir = new File(deployDir, LINUX_OS);
 			 srcZipFile = PRODUCTZIPDIR+File.separator+LINUX_PRODUCTZIPFILE;
-		 }
-		 	
+		 }		 	
 		 else
 		 {
-			 targetDir = new File(targetDir, WINDOWS_OS);
+			 deployDir = new File(deployDir, WINDOWS_OS);
 			 srcZipFile = PRODUCTZIPDIR+File.separator+WINDOWS_PRODUCTZIPFILE;
 		 }
 		 
+		// Zielvereichnis erstellen bzw. bestehendes loeschen 
 		try
 		{
-			if(targetDir.exists() && targetDir.isDirectory())
+			if(deployDir.exists() && deployDir.isDirectory())
 			{
 				// Zielverzeichnis loeschen 
-				FileUtils.cleanDirectory(targetDir);
+				FileUtils.cleanDirectory(deployDir);
 			}
 			else
 			{
 				// ein neues Zielverzeichnis erstellen
-				targetDir.mkdir();
+				deployDir.mkdir();
 			}
 			
-			unzipArchiv(srcZipFile, targetDir);
+			// Produktzip entpacken
+			unzipArchiv(srcZipFile, deployDir);
 			
 		} catch (IOException e)
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}		 
+	}
+	
+	/**
+	 * definierte Plugins entfernen
+	 * 
+	 * @param toSelectPlugins
+	 */
+	private static void deleteSelectedPlugins(List<String> toSelectPlugins)
+	{
+		if((deployDir != null) && (deployDir.isDirectory()))
+		{
+			File pluginDir = new File(deployDir, "plugins");
+			
+			IOFileFilter notFileFilter = FileFilterUtils.notFileFilter(FileFilterUtils.fileFileFilter());		
+			Collection<File>plugins = FileUtils.listFilesAndDirs(pluginDir, notFileFilter, TrueFileFilter.INSTANCE);
+			
+			for(File plugin : plugins)
+			{
+				String pluginName = plugin.getName();
+				for(String toSelectPlugin : toSelectPlugins)
+				{
+					if(StringUtils.startsWith(pluginName, toSelectPlugin))
+					{
+						try
+						{
+							FileUtils.deleteDirectory(plugin);
+							System.out.println("Plugin: "+pluginName+" wurde entfernt");
+							break;
+						} catch (IOException e)
+						{
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+				}
+			}
+		}
+				
 	}
 	
 	public static void zipDeploy(String os)

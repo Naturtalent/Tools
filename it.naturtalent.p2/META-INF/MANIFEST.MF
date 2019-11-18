@@ -5,12 +5,10 @@ Bundle-SymbolicName: it.naturtalent.p2
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: it.naturtalent.p2.Activator
 Bundle-Vendor: Dieter Apel
-Require-Bundle: org.eclipse.ui,
- org.eclipse.core.runtime,
- it.wp.common.io,
+Require-Bundle: it.wp.common.io,
  it.naturtalent.jdom,
- org.eclipse.emf.emfstore.common
+ org.eclipse.ui.workbench,
+ org.eclipse.osgi
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Automatic-Module-Name: it.naturtalent.p2
 Bundle-ActivationPolicy: lazy
-Import-Package: org.apache.commons.lang3

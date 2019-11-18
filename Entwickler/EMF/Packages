@@ -1,0 +1,72 @@
+org.eclipse.emf.ecp.ui.e4.editor
+ECPE4Editor
+
+it.naturtalent.emf.model
+E4ModelElementOpener
+
+/**********************************************
+Controlcast im Composite
+
+Composite text;
+final Control controlToObserve = Composite.class.cast(text).getChildren()[0];
+
+/**********************************************
+mit Adadapter Renderer ueberwachen
+
+		try
+		{
+			// Referenz im Dialog bearbeiten
+			ECPSWTViewRenderer.INSTANCE.render(container, referenz);			
+			
+		} catch (ECPRendererException e1)
+		{
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}	
+		
+		Adapter adapter = new AdapterImpl()
+		{
+			@Override
+			public void notifyChanged(final Notification msg)
+			{
+				Display.getDefault().asyncExec(new Runnable()
+				{
+					@Override
+					public void run()
+					{
+						System.out.println("notify: " + msg.getNewStringValue()+"  "+msg.getEventType());
+					}
+				});
+			}
+
+		};
+		referenz.eAdapters().add(adapter);
+/**********************************************	
+ECPSWTViewRenderer 
+
+			try {
+			// render = ECPSWTViewRenderer.INSTANCE.render(parent, modelElement);
+			final VView view = ViewProviderHelper.getView(modelElement, null);
+			final ViewModelContext vmc = ViewModelContextFactory.INSTANCE.createViewModelContext(view, modelElement,
+				new ECPReferenceServiceImpl(), deleteService);
+
+			render = ECPSWTViewRenderer.INSTANCE.render(parent, vmc);
+		} catch (final ECPRendererException ex) {
+			Activator.getReportService().report(new RenderingFailedReport(ex));
+			// MessageDialog.openError(parent.getShell(), ex.getClass().getName(), ex.getMessage());
+			// logger.log(LogService.LOG_ERROR, ex.getMessage(), ex);
+		}
+/**********************************************			
+	Containerelement ermitteln
+	
+	// ueberegebene Parameter
+	this.emfFormsDatabinding = emfFormsDatabinding;
+	this.VElement = VControl vElement;
+	
+	final IObservableValue observableValue = getEMFFormsDatabinding()
+			.getObservableValue(getVElement().getDomainModelReference(), getViewModelContext().getDomainModel());
+		Object container = (EObject) ((IObserving) observableValue).getObserved();
+		final EStructuralFeature structuralFeature = (EStructuralFeature) observableValue.getValueType();
+		observableValue.dispose();		
+/**********************************************	
+		

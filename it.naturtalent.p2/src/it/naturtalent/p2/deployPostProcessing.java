@@ -50,9 +50,11 @@ public class deployPostProcessing
 	
 	public static void main(String[] args)
 	{
+		String OS = WINDOWS_OS;
 		
 		// entpacken des mit Maven erzeugten Produkt-Zip
-		unzipDeploy_Os(WINDOWS_OS);
+		//unzipDeploy_Os(WINDOWS_OS);
+		unzipDeploy_Os(OS);
 		
 		// ausgewaehlte Plugins entfernen
 		List<String>toSelectPugin = new ArrayList<String>();
@@ -60,10 +62,12 @@ public class deployPostProcessing
 		deleteSelectedPlugins(toSelectPugin);
 		
 		// weitere Manipulationen vornehmen
-		deployProcessing(WINDOWS_OS);
+		//deployProcessing(WINDOWS_OS);
+		deployProcessing(OS);
 		
 		// wieder in einem neuem Produkt-Zip packen
-		zipDeploy(WINDOWS_OS);
+		//zipDeploy(WINDOWS_OS);
+		zipDeploy(OS);
 		
 		System.out.println("Deployprocessing beendet");
 	}
@@ -162,7 +166,7 @@ public class deployPostProcessing
 		 if(StringUtils.equals(os, LINUX_OS))
 		 {
 			 srcFolder = TEMP_DESTINATION_DIR+File.separator+LINUX_OS;
-			 destZipFile = TEMP_DESTINATION_DIR+File.separator+WINDOWS_OS;
+			 destZipFile = TEMP_DESTINATION_DIR+File.separator+LINUX_PRODUCTZIPFILE;
 		 }
 		 	
 		 else

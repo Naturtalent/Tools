@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><templates><template autoinsert="false" context="e4" deleted="false" description="der momentan selektierte Typ ueber den SelectionService injezieren " enabled="true" name="Inject SelectionService">@Inject
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><templates><template autoinsert="true" context="e4" deleted="false" description="ein EObject kopieren" enabled="true" name="copyEMFObject">EObject copyObject = EcoreUtil.copy(eObject);</template><template autoinsert="false" context="e4" deleted="false" description="der momentan selektierte Typ ueber den SelectionService injezieren " enabled="true" name="Inject SelectionService">@Inject
 public void handleSelection(@Named(IServiceConstants.ACTIVE_SELECTION) @Optional ${type} ${name})
 {
 	
@@ -135,4 +135,13 @@ public void createControl(Composite parent)
 		activeWindowContext.activate();
 		MPart currentActivePart = partService.findPart(NtProjectView.NTPROJECT_VIEW_ID);
 		partService.activate(currentActivePart);</template><template autoinsert="true" context="e4" deleted="false" description="Eine Klasse mit ContextInjection Verhalten erzeugen" enabled="true" name="ContextInjectionFectory">IEclipseContext context;
-Object newClass = ContextInjectionFactory.make(${classname}.class, context);</template><template autoinsert="true" context="e4" deleted="false" description="ein EObject kopieren" enabled="true" name="copyEMFObject">EObject copyObject = EcoreUtil.copy(eObject);</template></templates>
+Object newClass = ContextInjectionFactory.make(${classname}.class, context);</template><template autoinsert="true" context="e4" deleted="false" description="Name des im Navigator selektierten Projekts ermitteln" enabled="true" name="getSelectedProject">		Object selProject = selectionService.getSelection(ResourceNavigator.RESOURCE_NAVIGATOR_ID);
+		try
+		{
+			String value = ((IResource) selProject).getPersistentProperty(INtProject.projectNameQualifiedName);
+			textBetreff.setText(value);
+		} catch (CoreException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}</template></templates>

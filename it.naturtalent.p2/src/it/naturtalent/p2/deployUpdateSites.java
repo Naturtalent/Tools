@@ -31,9 +31,9 @@ import org.jdom2.input.SAXBuilder;
 public class deployUpdateSites
 {
 	// das Projekt um das es geht
-	//private static String projectName = "NaturtalentBasis";
+	private static String projectName = "NaturtalentBasis";
 	//private static String projectName = "Libreoffice";
-	private static String projectName = "Office";
+	//private static String projectName = "Office";
 
 	// Struktur zur Aufnahme der Authentifizierungsdaten aus dem SettingFile 'settings.xml'
 	private static class FTPSettings
@@ -73,7 +73,12 @@ public class deployUpdateSites
 	
 	// Main
 	public static void main(String[] args)
-	{
+	{	
+		String arg0 = args[0];
+		
+		if(StringUtils.isNotEmpty(arg0))
+			projectName = arg0;
+		
 		// Auth-Daten lesen
 		if(getFTPSettings())
 		{

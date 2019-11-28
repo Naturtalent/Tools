@@ -12,3 +12,6 @@ Require-Bundle: it.wp.common.io,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Automatic-Module-Name: it.naturtalent.p2
 Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: lib/commons-net-3.6.jar,
+ .
+Import-Package: org.eclipse.core.runtime

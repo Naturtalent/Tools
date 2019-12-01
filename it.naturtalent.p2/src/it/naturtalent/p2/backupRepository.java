@@ -28,7 +28,7 @@ import org.jdom2.input.SAXBuilder;
 
 
 
-public class deployUpdateSites
+public class backupRepository
 {
 	// das Projekt um das es geht
 	private static String projectName = "NaturtalentBasis";
@@ -43,8 +43,8 @@ public class deployUpdateSites
 	}
 	private static FTPSettings ftpSettings;
 
-	// aktuelles lokales Repository
-	private static String LOCAL_REPOSITORY_DIR = "Repositories2019";
+	// aktuelles lokales Repositories-Verzeichnis
+	private static String LOCAL_REPOSITORY_DIR = "/home/dieter/Repositories2019";
 	
 	// Parameter der in '.m2' gespeichete Settings-Datei
 	private static String SETTINGS_DIR = ".m2";
@@ -52,23 +52,18 @@ public class deployUpdateSites
 	private static String SETTINS_NAMESPACE = "http://maven.apache.org/SETTINGS/1.0.0";
 	
 	// Naturtalent FTP Parameter
-	private static String FTP_NATURTALENT_SERVER = "natur-talent";
-	private static String NATURTALENT_UDATESITES_PATH = "/public/UpdateSites";
+	//private static String FTP_NATURTALENT_SERVER = "natur-talent";
+	//private static String NATURTALENT_UDATESITES_PATH = "/public/UpdateSites";
 	
 	// Fritz FTP Parameter
 	private static String FTP_FRITZBOX_SERVER = "Fritz.Nas";
-	private static String FRITZBOX_UDATESITES_PATH = "/Stickrepos/public/UpdateSites";
+	private static String FRITZBOX_BACKUP_PATH = "/Stickrepos/public/Repositories";
 	
-	//private static String FTP_FRITZBOX_SERVER = "Fritz.Nas";
-	private static int FTP_PORT = 21;
-	//private static String REMOTE_UDATESITES_PATH = "/Stickrepos/public/UpdateSites";
+	private static int FTP_PORT = 21;	
 	private static FTPClient ftpClient;
 	
-	//private static String ftpServerName = FTP_NATURTALENT_SERVER;
-	//private static String ftpUpdateSitesPath = NATURTALENT_UDATESITES_PATH;
-	
 	private static String ftpServerName = FTP_FRITZBOX_SERVER;
-	private static String ftpUpdateSitesPath = FRITZBOX_UDATESITES_PATH;
+	private static String ftpBackupPath = FRITZBOX_BACKUP_PATH;
 	
 	
 	// Main
@@ -87,14 +82,15 @@ public class deployUpdateSites
 			if (ftpClient != null)
 			{
 				// src - die lokale UpdateSite
-				File localRepository = getLocalUpdateSiteDir(projectName);
-				if(localRepository != null)
+				File localRepository = new File(new File(LOCAL_REPOSITORY_DIR),projectName); 
+				if((localRepository != null) && (localRepository.isDirectory()) && (localRepository.exists())) 
 				{					
 					try
 					{
-						// das Remoteverzeichnis
-						String remoteDirPath = ftpUpdateSitesPath+File.separator+projectName+File.separator+"repository";
+						// das Backup-Repositoryverzeichnis
+						String remoteDirPath = ftpBackupPath+File.separator+projectName;
 						
+						// 
 						ftpClient.changeWorkingDirectory(remoteDirPath);
 					    int returnCode = ftpClient.getReplyCode();
 					    if (returnCode == 550) 
@@ -133,42 +129,7 @@ public class deployUpdateSites
 				}
 			}
 		}
-		System.out.println("Deployprocessing " + projectName+" beendet");
-	}
-	
-	/*
-	 * die lokale UpdateSite ermitteln
-	 */
-	private static File getLocalUpdateSiteDir(String projectName)
-	{
-		File localRepository = new File(SystemUtils.getUserHome(),LOCAL_REPOSITORY_DIR);
-		File projectDir = new File(localRepository, projectName);
-		if(projectDir.exists() && projectDir.isDirectory())
-		{
-			File relengDir = new File(projectDir,"releng");
-			
-			//IOFileFilter dirFilter = FileFilterUtils.directoryFileFilter();
-			IOFileFilter dirFilter = FileFilterUtils.directoryFileFilter();
-			IOFileFilter nameFilter = FileFilterUtils.nameFileFilter("target");
-	
-			IOFileFilter targetFilter = FileFilterUtils.and(dirFilter,nameFilter);
-			targetFilter = FileFilterUtils.makeDirectoryOnly(targetFilter);
-			
-			Collection<File>targetDir = FileUtils.listFilesAndDirs(relengDir, dirFilter, TrueFileFilter.INSTANCE);
-			
-			for(File file : targetDir)
-			{
-				Path path = new Path(file.getPath());
-				if(StringUtils.equals(path.lastSegment(),"target"))	
-				{
-					File repository = new File(file,"repository");
-					if(repository.exists())
-						return repository;
-				}
-			}
-		}
-		System.out.println("Projektpfad: "+projectName+ " nicht gefunden");
-		return null;
+		System.out.println("Deployprocessing beendet");
 	}
 	
 	/**

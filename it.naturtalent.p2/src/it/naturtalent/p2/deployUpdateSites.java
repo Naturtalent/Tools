@@ -44,7 +44,7 @@ public class deployUpdateSites
 	private static FTPSettings ftpSettings;
 
 	// aktuelles lokales Repository
-	private static String LOCAL_REPOSITORY_DIR = "Repositories2019";
+	private static String LOCAL_REPOSITORY_DIR = "Repositories2019/09";
 	
 	// Parameter der in '.m2' gespeichete Settings-Datei
 	private static String SETTINGS_DIR = ".m2";

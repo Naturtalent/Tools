@@ -29,7 +29,7 @@ public class deployPostProcessing
 {
 
 	// Verzeichnis der Deploy-Files  
-	private static final String PRODUCTZIPDIR = "/home/dieter/Repositories2019/NaturtalentRCP/products/it.naturtalent.produkt/target/products";
+	private static final String PRODUCTZIPDIR = "/home/dieter/Repositories/2019-09/NaturtalentRCP/products/it.naturtalent.produkt/target/products";
 	private static final String LINUX_PRODUCTZIPFILE = "RCP product-linux.gtk.x86_64.zip";
 	private static final String WINDOWS_PRODUCTZIPFILE = "RCP product-win32.win32.x86_64.zip";
 	private static final String TEMP_DESTINATION_DIR = "/home/dieter/deploy";
@@ -39,12 +39,13 @@ public class deployPostProcessing
 	private static final String WINDOWS_OS = "windows";
 	
 	// jre-Runtimes
-	private static final String WIN_JAVA6 = "/home/dieter/Repositories2019/Tools/it.naturtalent.p2/JRE/java8/jre";
+	//private static final String WIN_JAVA6 = "/home/dieter/Repositories2019/Tools/it.naturtalent.p2/JRE/java8/jre";
+	private static final String WIN_JAVA6 = "/home/dieter/deploy/jre";
 
 	private static final String WINDOWS_LAUNCHER = TEMP_DESTINATION_DIR + "/" + WINDOWS_OS + "/" + "NaturTalent.exe";
 			
 	//private static final String WINDOWS_LAUNCHER_IMAGE = "/home/dieter/Repositories-2019-032/Tools/it.naturtalent.tools/NaturtalentLauchIcons/Novak/ico/nt.ico";
-	private static final String WINDOWS_LAUNCHER_IMAGE = "/home/dieter/Repositories2019/Tools/it.naturtalent.tools/Naturtalent Lauch Icons/Novak/nt.ico";
+	private static final String WINDOWS_LAUNCHER_IMAGE = "/home/dieter/Repositories/2019-09/Tools/it.naturtalent.tools/Naturtalent Lauch Icons/Novak/ico/nt.ico";
 	
 	private static File deployDir;
 	
@@ -388,6 +389,10 @@ public class deployPostProcessing
 			{
 				// JRE einbinden
 				FileUtils.copyDirectory(srcDir, destDir);
+				System.out.println("jre  eingefügt ");
+				
+				
+				System.out.println(WINDOWS_LAUNCHER+"   "+WINDOWS_LAUNCHER_IMAGE);
 				
 				// Icons im launcher austauschen
 				IconExe iconExe = new IconExe();

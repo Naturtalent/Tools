@@ -58,9 +58,11 @@ public class deployPostProcessing
 		unzipDeploy_Os(OS);
 		
 		// ausgewaehlte Plugins entfernen
+		/*
 		List<String>toSelectPugin = new ArrayList<String>();
 		toSelectPugin.add("org.eclipse.ui.themes");
 		deleteSelectedPlugins(toSelectPugin);
+		*/
 		
 		// weitere Manipulationen vornehmen
 		//deployProcessing(WINDOWS_OS);
